@@ -32,14 +32,14 @@
             $this->utilities = new Utilities();
         }
         function updateUser($userID) {
-            $data = $this->formHandler->validate(['fullname', 'email']);
+            $data = $this->formHandler->validate(['picture', 'title', 'firstname', 'lastname', 'email', 'address', 'phonenumber']);
             if($this->formHandler->isError) return;
             // check if email not in database 
-            $check = $this->select("users", "email = ? AND user_id != ?", [$data['email'], $userID], method: "rowCount");
+            $check = $this->select("user", "email = ? AND ID != ?", [$data['email'], $userID], method: "rowCount");
             if($check > 0) {
                  echo $this->utilities->message("Email already exits", 'error'); return;
             }
-            $update = $this->update("users", ["full_name"=>$data['fullname'], "email"=>$data['email']], "user_id ='$userID'");
+            $update = $this->update("user", ["title"=>$data['title'], "first_name"=>$data['firstname'], "last_name"=>$data['lastname'], "phone_number"=>$data['phonenumber'], "email"=>$data['email'], "address"=>$data['address'], "profile_image"=>$data['picture'] ], "ID ='$userID'");
             if($update) {
                  echo $this->utilities->message("Profile updated successfully.", "success");
             } else {

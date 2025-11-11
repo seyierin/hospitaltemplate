@@ -96,7 +96,7 @@
         session_destroy();
         // redirect to signin page
         
-        header("Location: signin.php");
+        header("Location: login.php");
         exit();
     }
 

@@ -13,9 +13,9 @@
         // print_r($_POST);
     }
 
-    if(isset($_POST['edit_profile'])) {
+    if(isset($_POST['save'])) {
         // call edit profile function
         $userObj = new user();
-        $userObj->updateUser(htmlspecialchars($_SESSION['user_id']));
+        $userObj->updateUser(htmlspecialchars($_SESSION['ID']));
         // print_r($_POST);
     }

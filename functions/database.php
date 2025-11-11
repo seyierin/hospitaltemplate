@@ -79,10 +79,27 @@
             return $query->execute($params);
         }
 
+        function totaldoctors(){
+            $totaldoctor = $this->db->prepare("SELECT COUNT(doctor_id) FROM doctors");
+            $totaldoctor->execute();
+            }
+            
+
+function totalpatients(){
+$totalpatients = $this->db->prepare("SELECT COUNT(patient_id) FROM patients");
+$totalpatients->execute();
+}
+
+function totalpatientsattend(){
+    $totalpatientattend = $this->db->prepare("SELECT COUNT(patient_id) FROM patient_documents");
+    $totalpatientattend->execute();
+}
+
         // close connection
         function __destruct() {
             $this->db = null;
         }
+
 
 
     }
