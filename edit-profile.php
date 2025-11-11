@@ -308,18 +308,6 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
         ?>
 
 
-<?php
-$totaldoctor = $this->db->prepare("SELECT COUNT(doctor_id) FROM doctors");
-$totaldoctor->excute();
-
-$totalpatients = $this->db->prepare("SELECT COUNT(patient_id) FROM patients");
-$totalpatients->execute();
-
-$totalpatientattend = $this->db->prepare("SELECT COUNT(patient_id FROM patient_documents");
-$totalpatientattend->execute();
-
-
-?>
                     <div class="card-box">
                         <h3 class="card-title">Basic Informations</h3>
                         <div class="row">
