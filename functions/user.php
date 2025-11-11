@@ -21,8 +21,7 @@
     //              echo "<div class='bg-light-danger text-danger'>Error updating profile</div>";
     //         }
     //     }
-    require_once "functions/formhandler.php";
-    require_once "functions/utilities.php";
+
     class user extends database {
          private $formHandler;
         private $utilities;

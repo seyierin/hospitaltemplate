@@ -24,6 +24,10 @@
             }
         }
 
+        function validateRole($requiredRole, $userID = null) {
+           return true;
+        }
+
         // select
         function select($from, $where, $params,  $select = "*", $method = "fetch"){
             $query = $this->db->prepare("SELECT $select FROM $from WHERE $where");

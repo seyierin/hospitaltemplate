@@ -19,3 +19,10 @@
         $userObj->updateUser(htmlspecialchars($_SESSION['ID']));
         // print_r($_POST);
     }
+
+    if(isset($_POST['add_patient'])) {
+        // call change password function
+        $patient = new patients();
+        $patient->addPatient();
+        // print_r($_POST);
+    }
