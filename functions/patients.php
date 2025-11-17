@@ -27,4 +27,9 @@
             echo $this->utilities->message("Error adding patient.", 'error');
         }
     }
+
+
+    function getPatients(){
+        return $this->select("patients", method: "all");
     }
+}

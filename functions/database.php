@@ -29,7 +29,7 @@
         }
 
         // select
-        function select($from, $where, $params,  $select = "*", $method = "fetch"){
+        function select($from, $where = "1=1", $params = [],  $select = "*", $method = "fetch"){
             $query = $this->db->prepare("SELECT $select FROM $from WHERE $where");
             $query->execute($params);
             switch($method){
