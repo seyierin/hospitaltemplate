@@ -21,7 +21,7 @@
             echo $this->utilities->message("Contact Number already exists.", 'error');
             return;
         }
-        if($this->insert("patients",$data)) {
+        if($this->insert("patients",["first_name"=>$data['first_name'], "last_name"=>$data['last_name'], "dob"=>$data['dob'],"gender"=>$data['gender'],"contact"=>$data['contact'], "email"=> $data['email'], "address"=>$data['address'], "emergency_contact"=>$data['emergency_contact'] ])) {
             echo $this->utilities->message("Patient added successfully.", "success");
         } else {
             echo $this->utilities->message("Error adding patient.", 'error');
