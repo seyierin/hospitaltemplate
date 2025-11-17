@@ -46,12 +46,12 @@
 										<label class="gen-label">Gender:</label>
 										<div class="form-check-inline">
 											<label class="form-check-label">
-												<input type="radio" name="gender" class="form-check-input">Male
+												<input type="radio" name="gender" value="Male" class="form-check-input">Male
 											</label>
 										</div>
 										<div class="form-check-inline">
 											<label class="form-check-label">
-												<input type="radio" name="gender" class="form-check-input">Female
+												<input type="radio" name="gender" value="Female" class="form-check-input">Female
 											</label>
 										</div>
 									</div>
