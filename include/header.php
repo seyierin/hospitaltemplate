@@ -145,9 +145,17 @@ require_once "include/session.php";
                         <li class="active">
                             <a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                         </li>
-						<li>
-                            <a href="doctors.html"><i class="fa fa-user-md"></i> <span>Doctors</span></a>
-                        </li>
+
+                        
+
+                        <li class="submenu">
+							<a href="#"><i class="fa fa-user-md"></i> <span> Doctors </span> <span class="menu-arrow"></span></a>
+							<ul style="display: none;">
+								<li><a href="add_doctor.php">Add Doctor</a></li>
+								<li><a href="doctor.php">View Doctors</a></li>
+							</ul>
+						</li>
+
 
                         <li class="submenu">
 							<a href="#"><i class="fa fa-wheelchair"></i> <span> Patients </span> <span class="menu-arrow"></span></a>

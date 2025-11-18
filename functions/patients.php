@@ -32,4 +32,9 @@
     function getPatients(){
         return $this->select("patients", method: "all");
     }
+
+function deletePatient($userID){
+    return $this->delete("patients", "patient_id = '$userID'");
+}
+
 }

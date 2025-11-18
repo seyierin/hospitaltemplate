@@ -1,17 +1,18 @@
 <?php 
 	require_once "include/header.php"; 
-	require_once "functions/patients.php";
-	$patient = new patients();
-	$patients = $patient->getPatients();
+	require_once "functions/doctors.php";
+	$doctor = new Doctors();
+	$doctors = $doctor->getDoctors();
+    ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL);
 ?>
 
             <div class="content">
                 <div class="row">
                     <div class="col-sm-4 col-3">
-                        <h4 class="page-title">Patients</h4>
+                        <h4 class="page-title">Doctors</h4>
                     </div>
                     <div class="col-sm-8 col-9 text-right m-b-20">
-                        <a href="add_patient.php" class="btn btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Patient</a>
+                        <a href="add_doctor.php" class="btn btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Doctor</a>
                     </div>
                 </div>
 				<div class="row">
@@ -22,32 +23,28 @@
 									<tr>
 										<th>ID</th>
 										<th>Name</th>
+										<th>specialization</th>
+										<th> Department</th>
 										<th>Email</th>
-										<th>DOB</th>
-										<th>Gender</th>
-										<th>Address</th>
 										<th>Phone</th>
-										<th>Emergency Contact</th>
 										<th class="text-right">Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach($patients as $patient){ ?>
+									<?php foreach($doctors as $doctor){ ?>
 									<tr>
-										<td><?= $patient['patient_id'] ?></td>
-										<td><img width="28" height="28" src="assets/img/user.jpg" class="rounded-circle m-r-5" alt=""> <?= ucwords($patient['first_name'].' '.$patient['last_name']) ?></td>
-										<td><?= $patient['email'] ?></td>
-										<td><?= $patient['dob'] ?></td>
-										<td><?= $patient['gender'] ?></td>
-										<td><?= $patient['address']; ?></td>
-										<td><?= $patient['contact']; ?></td>
-										<td><?= $patient['emergency_contact']; ?></td>
+										<td><?= $doctor['doctor_id'] ?></td>
+										<td><img width="28" height="28" src="assets/img/user.jpg" class="rounded-circle m-r-5" alt=""> <?= $doctor ['name'] ?></td>
+										<td><?= $doctor['specialization'] ?></td>
+										<td><?= $doctor['department_id'] ?></td>
+										<td><?= $doctor['email'] ?></td>
+										<td><?= $doctor['phone']; ?></td>
 										<td class="text-right">
 											<div class="dropdown dropdown-action">
 												<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
 												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="edit_patient.php"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-													<a class="dropdown-item" name="delete" href="#" type="submit"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+													<a class="dropdown-item" href="edit_doctor.php"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+													<a class="dropdown-item"  name="delete" href="#" data-toggle="modal" data-target="#delete_patient"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
 												</div>
 											</div>
 										</td>
@@ -65,7 +62,7 @@
 				<div class="modal-content">
 					<div class="modal-body text-center">
 						<img src="assets/img/sent.png" alt="" width="50" height="46">
-						<h3>Are you sure want to delete this Patient?</h3>
+						<h3>Are you sure want to delete this Doctor?</h3>
 						<div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
 							<button type="submit" class="btn btn-danger">Delete</button>
 						</div>
