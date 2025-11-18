@@ -2,8 +2,14 @@
 require_once "include/session.php";
 require_once "include/header.php";
 require_once "functions/patients.php";
-$patient = new patients();
-	$patients = $patient->getPatients();
+$Patient = new patients();
+if(isset($_GET['patient_id']) && $_GET['patient_id'] != ""){
+	$patient = $Patient->getPatient(htmlspecialchars($_GET['patient_id']));
+}
+if(!$patient){
+    echo "<script>window.location.href='patients.php';</script>";
+    exit;
+}
 ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL);
 ?>
 

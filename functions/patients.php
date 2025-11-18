@@ -33,6 +33,10 @@
         return $this->select("patients", method: "all");
     }
 
+    function getPatient($userID) {
+        return $this->select("patients", "patient_id = ?", [$userID]);
+    }
+
 function deletePatient($userID){
     return $this->delete("patients", "patient_id = '$userID'");
 }
