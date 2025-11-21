@@ -32,7 +32,9 @@
     function getDoctors(){
         return $this->select("doctors", method: "all");
     }
-
+function getDoctor($userID){
+    return $this->select("doctors", "doctor_id = ?", [$userID]);
+}
 
     function deleteDoctor($userID){
         return $this->delete("patients", "doctor_id = '$userID'");

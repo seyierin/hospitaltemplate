@@ -32,20 +32,20 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>First Name <span class="text-danger">*</span></label>
-                                        <input name="first_name" class="form-control" value="<?php if(isset($_POST['first_name'])) { echo $_POST['first_name']; } ?>" type="text">
+                                        <input name="first_name" class="form-control" value="<?php echo $patient ['first_name']?>" type="text">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Last Name</label>
-                                        <input name="last_name" class="form-control" value="<?php if(isset($_POST['last_name'])) { echo $_POST['last_name']; } ?>" type="text">
+                                        <input name="last_name" class="form-control" value="<?php echo $patient ['last_name'] ?>" type="text">
                                     </div>
                                 </div>
                                
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Email <span class="text-danger">*</span></label>
-                                        <input name="email" class="form-control" value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>" type="email">
+                                        <input name="email" class="form-control" value="<?php echo $patient ['email'] ?>" type="email">
                                     </div>
                                 </div>
                                
@@ -53,7 +53,7 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
                                     <div class="form-group">
                                         <label>Date of Birth</label>
                                         <div class="cal-icon">
-                                            <input name="dob" type="date" value="<?php if(isset($_POST['date'])) { echo $_POST['date']; } ?>" class="form-control">
+                                            <input name="dob" type="date" value="<?php echo $patient ['dob'] ?>" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
 										<div class="col-sm-12">
 											<div class="form-group">
 												<label>Address</label>
-												<input name="address" type="text" value="<?php if(isset($_POST['address'])) { echo $_POST['address']; } ?>" class="form-control ">
+												<input name="address" type="text" value="<?php echo $patient['address'] ?>" class="form-control ">
 											</div>
 										</div>
 										
@@ -86,13 +86,13 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Phone </label>
-                                        <input name="contact" class="form-control" value="<?php if(isset($_POST['contact'])) { echo $_POST['contact']; } ?>" type="text">
+                                        <input name="contact" class="form-control" value="<?php echo $patient ['contact'] ?>" type="text">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Emergency Contact </label>
-                                        <input name="emergency_contact" class="form-control" value="<?php if(isset($_POST['emergency_contact'])) { echo $_POST['emergency_contact']; } ?>" type="text">
+                                        <input name="emergency_contact" class="form-control" value="<?php echo $patient ['emergency_contact'] ?>" type="text">
                                     </div>
                                 </div>
                                 <!-- <div class="col-sm-6">

@@ -2,8 +2,14 @@
 require_once "include/session.php";
 require_once "include/header.php";
 require_once "functions/doctors.php";
-$doctor = new Doctors();
-$doctors = $doctor->getDoctors();
+$Doctor = new Doctors();
+if(isset($_GET['doctor_id']) && $_GET['doctor_id'] != ""){
+	$doctor = $Doctor->getDoctor(htmlspecialchars($_GET['doctor_id']));
+}
+if(!$doctor){
+    echo "<script>window.location.href='doctor.php';</script>";
+    exit;
+}
 
 ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL);
 ?>
@@ -27,20 +33,20 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Full Name <span class="text-danger">*</span></label>
-                                        <input name="name" class="form-control" value="<?php if(isset($_POST['name'])) { echo $_POST['name']; } ?>" type="text">
+                                        <input name="name" class="form-control" value="<?php echo $doctor ['name'] ?>" type="text">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Specialization</label>
-                                        <input name="specialty" class="form-control" value="<?php if(isset($_POST['specialty'])) { echo $_POST['specialty']; } ?>" type="text">
+                                        <input name="specialty" class="form-control" value="<?php echo $doctor ['specialization']  ?>" type="text">
                                     </div>
                                 </div>
                                
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Email <span class="text-danger">*</span></label>
-                                        <input name="email" class="form-control" value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>" type="email">
+                                        <input name="email" class="form-control" value="<?php echo $doctor ['email']  ?>" type="email">
                                     </div>
                                 </div>
                                
@@ -48,7 +54,7 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Phone </label>
-                                        <input name="contact" class="form-control" value="<?php if(isset($_POST['contact'])) { echo $_POST['contact']; } ?>" type="text">
+                                        <input name="contact" class="form-control" value="<?php echo $doctor ['phone'] ?>" type="text">
                                     </div>
                                 </div>
                                 
