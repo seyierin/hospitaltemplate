@@ -22,7 +22,7 @@
             return;
         }
         if($this->insert("doctors",["name"=>$data['name'], "specialization"=>$data['specialty'], "email"=>$data['email'],"phone"=>$data['contact'] ])) {
-            echo $this->utilities->message("Doctor added successfully.", "success");
+            echo $this->utilities->message("Doctor added successfully. <a href=''>Click here </a> to see update.", "success");
         } else {
             echo $this->utilities->message("Error adding doctor.", 'error');
         }

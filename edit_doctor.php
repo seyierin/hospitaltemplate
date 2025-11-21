@@ -5,6 +5,7 @@ require_once "functions/doctors.php";
 $Doctor = new Doctors();
 if(isset($_GET['doctor_id']) && $_GET['doctor_id'] != ""){
 	$doctor = $Doctor->getDoctor(htmlspecialchars($_GET['doctor_id']));
+    $departments = $database->select("departments", method: "all");
 }
 if(!$doctor){
     echo "<script>window.location.href='doctor.php';</script>";
@@ -33,20 +34,32 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Full Name <span class="text-danger">*</span></label>
-                                        <input name="name" class="form-control" value="<?php echo $doctor ['name'] ?>" type="text">
+                                        <input name="name" class="form-control" value="<?= $_POST['name'] ?? $doctor ['name'] ?>" type="text">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Specialization</label>
-                                        <input name="specialty" class="form-control" value="<?php echo $doctor ['specialization']  ?>" type="text">
+                                        <input name="specialty" class="form-control" value="<?= $_POST['specialty'] ?? $doctor ['specialization']  ?>" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Department</label>
+                                        <select class="form-control" name="department">
+                                            <option value="">Select Department</option>
+                                            <?php foreach($departments as $department){ ?>
+                                                <option value="<?= $department['department_id'] ?>" <?php if(($_POST['department'] ?? $doctor['department_id']) == $department['department_id']) echo "selected"; ?>><?= $department['department_name'] ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
                                
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Email <span class="text-danger">*</span></label>
-                                        <input name="email" class="form-control" value="<?php echo $doctor ['email']  ?>" type="email">
+                                        <input name="email" class="form-control" value="<?= $_POST['email'] ?? $doctor ['email']  ?>" type="email">
                                     </div>
                                 </div>
                                
@@ -54,7 +67,7 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Phone </label>
-                                        <input name="contact" class="form-control" value="<?php echo $doctor ['phone'] ?>" type="text">
+                                        <input name="contact" class="form-control" value="<?= $_POST['contact'] ?? $doctor ['phone'] ?>" type="text">
                                     </div>
                                 </div>
                                 

@@ -29,7 +29,7 @@
 
     if(isset($_POST['edit_patient'])) {
         // call change password function
-        $editpatient = new editpatient();
+        $editpatient = new patients();
         $editpatient->updatepatient(htmlspecialchars($patient['patient_id']));
         // print_r($_POST);
     }

@@ -5,6 +5,7 @@ require_once "functions/patients.php";
 $Patient = new patients();
 if(isset($_GET['patient_id']) && $_GET['patient_id'] != ""){
 	$patient = $Patient->getPatient(htmlspecialchars($_GET['patient_id']));
+    $gender = $patient['gender']; // Male or Female
 }
 if(!$patient){
     echo "<script>window.location.href='patients.php';</script>";
@@ -24,10 +25,6 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                         <form method="POST">
-                        <?php 
-            require_once "functions/database.php"; 
-            require_once "functions/edit_patient.php"; 
-        ?>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -62,12 +59,12 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
 										<label class="gen-label">Gender:</label>
 										<div class="form-check-inline">
 											<label class="form-check-label">
-												<input type="radio" name="gender" value="Male" class="form-check-input">Male
+												<input type="radio" name="gender" value="Male" class="form-check-input" <?php if($gender == "Male") echo "checked" ; ?> >Male
 											</label>
 										</div>
 										<div class="form-check-inline">
 											<label class="form-check-label">
-												<input type="radio" name="gender" value="Female" class="form-check-input">Female
+												<input type="radio" name="gender" value="Female" class="form-check-input" <?php if($gender == "Female") echo "checked" ; ?>>Female
 											</label>
 										</div>
 									</div>
