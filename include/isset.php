@@ -41,6 +41,14 @@
         // print_r($_POST);
     }
 
+
+    if(isset($_POST['add_department'])) {
+        // call change password function
+        $department = new Department();
+        $department->addDepartment();
+        // print_r($_POST);
+    }
+
     if(isset($_POST['delete'])) {
         // call change password function
         $remove = new patients();
@@ -50,8 +58,16 @@
 
     if(isset($_POST['edit_doctor'])) {
         // call change password function
-        $editdoctor = new editdoctor();
+        $editdoctor = new Doctors();
         $editdoctor->UpdateDoctor(htmlspecialchars($doctor['doctor_id']));
+        // print_r($_POST);
+    }
+
+
+    if(isset($_POST['edit_department'])) {
+        // call change password function
+        $editdoctor = new Department();
+        $editdoctor->UpdateDepartment(htmlspecialchars($department['department_id']));
         // print_r($_POST);
     }
 

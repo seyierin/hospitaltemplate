@@ -165,6 +165,15 @@ require_once "include/session.php";
 							</ul>
 						</li>
 
+                        <li class="submenu">
+							<a href="#"><i class="fa fa-hospital-o"></i> <span> Departments </span> <span class="menu-arrow"></span></a>
+							<ul style="display: none;">
+								<li><a href="add_department.php">Add Departments</a></li>
+								<li><a href="departments.php">View departments</a></li>
+							</ul>
+						</li>
+
+
                         <li>
                             <a href="appointments.html"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
                         </li>
