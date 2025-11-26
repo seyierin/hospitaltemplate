@@ -77,3 +77,20 @@
         $deletedoctor->deleteDoctor(htmlspecialchars($doctor['doctor_id']));
         // print_r($_POST);
     }
+
+    if(isset($_POST['add_staff'])) {
+        $staffObj = new staff();
+        $staffObj->addStaff();
+    }
+
+    if(isset($_POST['edit_staff'])) {
+        $staffObj = new staff();
+        $staffID = htmlspecialchars($_GET['staff_id'] ?? $_POST['staff_id'] ?? "");
+        if($staffID != "") $staffObj->updateStaff($staffID);
+    }
+
+    if(isset($_POST['delete_staff'])) {
+        $staffObj = new staff();
+        $staffID = htmlspecialchars($_POST['staff_id'] ?? $_GET['staff_id'] ?? "");
+        if($staffID != "") $staffObj->deleteStaff($staffID);
+    }

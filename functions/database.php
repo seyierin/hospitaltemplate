@@ -99,6 +99,83 @@ function totalpatientsattend(){
     $totalpatientattend->execute();
 }
 
+
+function get_settings($value = "company_name", $where = "settings",  $who = "all", $type = "meta_for")
+    {
+        $data = $this->getall("$where", "meta_name = ? and meta_for = ?", [htmlspecialchars($value), $who]);
+       
+        if (!is_array($data)) {
+            return "";
+        }
+        if ($this->isEncrypted($data['meta_value'])) {
+            $data['meta_value'] = $this->get_enypt_data($data['meta_value']);
+        }
+        return ($type == "all") ? $data : $data['meta_value'];
+    }
+
+
+     protected function get_enypt_data($id)
+    {
+        $data = $this->getall("encrypted_data", "ID = ?", [$id]);
+        if (!is_array($data)) return false;
+        return $this->decryptData($data['meta_value']);
+    }
+
+    function isEncrypted($data)
+    {
+        $explode = explode("-", $data);
+        if ($explode[0] == "enyptdata") return true;
+        return false;
+    }
+
+    protected function enypt_unlink($id)
+    {
+        if ($this->delete("encrypted_data", "ID = ?", [$id])) return true;
+        return false;
+    }
+    function enypt_and_save_data($data)
+    {
+        if ($data == null || $data == "") return false;
+        $mainData = $data;
+        $data = $this->encryptData($data);
+        if ($data == false || $data == "") return false;
+        $data = [
+            "ID" => uniqid("enyptdata-"),
+            "meta_value" => $data
+        ];
+        if ($this->quick_insert("encrypted_data", $data)) {
+            $data['data'] = $mainData;
+            return $data;
+        }
+        return false;
+    }
+
+
+    function encryptData($data, $secretKey = null)
+    {
+        if ($secretKey == null && isset($_ENV['DATA_ENCRYPTION_KEY'])) $secretKey = $_ENV['DATA_ENCRYPTION_KEY'];
+        if ($secretKey == null) return false;
+        $method = 'AES-256-CBC';
+        $ivLength = openssl_cipher_iv_length($method);
+        $iv = openssl_random_pseudo_bytes($ivLength);
+        $encryptedData = openssl_encrypt($data, $method, $secretKey, 0, $iv);
+        return base64_encode($iv . $encryptedData);
+    }
+
+    function decryptData($encryptedDataWithIv, $secretKey = null)
+    {
+        if ($secretKey == null && isset($_ENV['DATA_ENCRYPTION_KEY'])) $secretKey = $_ENV['DATA_ENCRYPTION_KEY'];
+        if ($secretKey == null) return false;
+        $method = 'AES-256-CBC';
+        $ivLength = openssl_cipher_iv_length($method);
+        $ivWithCiphertext = base64_decode($encryptedDataWithIv);
+        $iv = substr($ivWithCiphertext, 0, $ivLength);
+        $encryptedData = substr($ivWithCiphertext, $ivLength);
+
+        return openssl_decrypt($encryptedData, $method, $secretKey, 0, $iv);
+    }
+    
+
         // close connection
         function __destruct() {
             $this->db = null;

@@ -1,0 +1,7 @@
+{
+    "dashboard": { "list": "View Dashboard" },
+    "staff": { "list": "View Doctors", "add": "Add Staff", "edit": "Edit Staff" },
+    "patient": { "list": "View Patients", "add": "Add Patient", "edit": "Edit Patient" },
+    "departments": { "list": "View Departments", "add": "Add Department", "edit": "Edit Department" },
+    "roles": { "list": "Access to list of all roles", "add": "Add Role", "edit": "Modify  Role" }
+}

@@ -2,6 +2,8 @@
 require_once "include/session.php";
     require_once "functions/formhandler.php";
     require_once "functions/utilities.php";
+    require_once "functions/roles.php";
+    $roles = new roles;
 ?>
 
 <!DOCTYPE html>
