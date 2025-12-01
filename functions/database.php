@@ -102,7 +102,7 @@ function totalpatientsattend(){
 
 function get_settings($value = "company_name", $where = "settings",  $who = "all", $type = "meta_for")
     {
-        $data = $this->getall("$where", "meta_name = ? and meta_for = ?", [htmlspecialchars($value), $who]);
+        $data = $this->select("$where", "meta_name = ? and meta_for = ?", [htmlspecialchars($value), $who]);
        
         if (!is_array($data)) {
             return "";
@@ -116,7 +116,7 @@ function get_settings($value = "company_name", $where = "settings",  $who = "all
 
      protected function get_enypt_data($id)
     {
-        $data = $this->getall("encrypted_data", "ID = ?", [$id]);
+        $data = $this->select("encrypted_data", "ID = ?", [$id]);
         if (!is_array($data)) return false;
         return $this->decryptData($data['meta_value']);
     }
@@ -174,7 +174,7 @@ function get_settings($value = "company_name", $where = "settings",  $who = "all
 
         return openssl_decrypt($encryptedData, $method, $secretKey, 0, $iv);
     }
-    
+
 
         // close connection
         function __destruct() {

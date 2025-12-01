@@ -151,10 +151,10 @@ require_once "include/session.php";
                         
 
                         <li class="submenu">
-							<a href="#"><i class="fa fa-user-md"></i> <span> Doctors </span> <span class="menu-arrow"></span></a>
+							<a href="#"><i class="fa fa-user-md"></i> <span> Staff </span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">
-								<li><a href="add_doctor.php">Add Doctor</a></li>
-								<li><a href="doctor.php">View Doctors</a></li>
+								<li><a href="add_staff.php">Add Staff</a></li>
+								<li><a href="staff.php">View Staff</a></li>
 							</ul>
 						</li>
 
