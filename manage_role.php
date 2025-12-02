@@ -1,6 +1,6 @@
 <?php require_once "include/header.php";
-if(isset($_GET['role_id']) && $_GET['role_id'] != ""){
-    $rolePermissions = $roles->get_role(htmlspecialchars($_GET['role_id']), true);
+if(isset($_GET['ID']) && $_GET['ID'] != ""){
+    $rolePermissions = $roles->get_role(htmlspecialchars($_GET['ID']), true);
     $rolename = $rolePermissions['name'];
     $rolePermissions = $rolePermissions['permissions'];
 }
@@ -15,15 +15,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             }
         }
     }
-   if($roles->manage_role($name, json_encode($permissions), isset($_GET['role_id']) ? htmlspecialchars($_GET['role_id']) : null)){
-        echo "success";
+   if($roles->manage_role($name, json_encode($permissions), isset($_GET['ID']) ? htmlspecialchars($_GET['ID']) : null)){
+        echo "<div class='alert alert-success'> Role added successfully </div>";
    }
 }
 ?>
  <div class="container mt-5">
         <h2>Role</h2>
         <form id="roleForm" method="POST">
-            <input type="hidden" name="role_id" value="<?= isset($_GET['role_id']) ? htmlspecialchars($_GET['role_id']) : "" ?>">
+            <input type="hidden" name="role_id" value="<?= isset($_GET['ID']) ? htmlspecialchars($_GET['ID']) : "" ?>">
             <div class="mb-3">
                 <label for="roleName" class="form-label">Role Name</label>
                 <input type="text" class="form-control" name="name" id="roleName" value="<?=  $_POST['name'] ?? $rolename  ?? "" ?>" placeholder="e.g., Customer Support" required>

@@ -175,6 +175,14 @@ require_once "include/session.php";
 							</ul>
 						</li>
 
+                        <li class="submenu">
+							<a href="#"><i class="fa fa-cog"></i> <span> Roles</span> <span class="menu-arrow"></span></a>
+							<ul style="display: none;">
+								<li><a href="manage_role.php">Add Roles</a></li>
+								<li><a href="roles.php">View Roles</a></li>
+							</ul>
+						</li>
+
 
                         <li>
                             <a href="appointments.html"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
@@ -252,9 +260,7 @@ require_once "include/session.php";
 								<li><a href="invoice-reports.html"> Invoice Report </a></li>
 							</ul>
 						</li>
-                        <li>
-                            <a href="settings.html"><i class="fa fa-cog"></i> <span>Settings</span></a>
-                        </li>
+                        
                         <li class="menu-title">UI Elements</li>
                         <li class="submenu">
                             <a href="#"><i class="fa fa-laptop"></i> <span> Components</span> <span class="menu-arrow"></span></a>
